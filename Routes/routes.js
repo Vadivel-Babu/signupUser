@@ -3,6 +3,14 @@ import { User } from "../Models/userModel.js";
 
 const router = Router();
 
+router.get("/", async (req, res) => {
+  try {
+    res.json({ message: "api working" });
+  } catch (error) {
+    res.json({ message: error });
+  }
+});
+
 router.post("/signup", async (req, res) => {
   try {
     const { name, email } = req.body;
