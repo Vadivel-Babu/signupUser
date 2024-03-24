@@ -4,7 +4,9 @@ import cors from "cors";
 import router from "./Routes/routes.js";
 import "dotenv/config";
 import mongoose from "mongoose";
-mongoose.connect(process.env.DB_URL);
+mongoose.connect(
+  "mongodb+srv://vadivelbabu:vadivel@cluster0.jg5ufpz.mongodb.net/user"
+);
 const database = mongoose.connection;
 
 database.on("error", (err) => {
