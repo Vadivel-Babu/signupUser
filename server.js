@@ -1,9 +1,17 @@
 import express from "express";
 import cors from "cors";
-import connectDB from "./db.js";
+// import connectDB from "./db.js";
 import router from "./Routes/routes.js";
 import "dotenv/config";
-connectDB();
+import mongoose from "mongoose";
+mongoose.connect(process.env.DB_URL);
+const database = mongoose.connection;
+
+database.on("error", (err) => {
+  console.log(err);
+  database.close();
+});
+database.on("connected", () => console.log("db connected"));
 
 const app = express();
 const PORT = process.env.PORT || 4000;
